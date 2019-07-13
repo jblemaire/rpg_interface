@@ -1,0 +1,173 @@
+{% extends "base.html.twig" %}
+
+ {% block stylesheets %}
+    <style>
+        body{
+            perspective: 1px;
+            transform-style: preserve-3d;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .parallax-wrapper{
+
+            /* The image used */
+
+
+            /* Full height */
+            height: 100%;
+
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        .regular-wrapper{
+
+        }
+        .bg-1{
+            background-image: url({{ asset('img/parallax/1.jpg') }});
+        }
+        .bg-2{
+            background-image: url({{ asset('img/parallax/2.jpg') }});
+        }
+        p{
+            font-size:1.2em;
+        }
+    </style>
+ {% endblock %}
+
+
+{% block body %}
+    <main class="container w-100 mx-auto mx-xs-5  px-0 ">
+
+        <div class="container d-flex  w-100" style="height:15em;">
+
+            <div class="row mx-auto align-items-center w-100"  >
+
+                <div class="col-12 mx-auto text-center " >
+                    <h1 class="text-white ">Welcome to the rpg interface</h1>
+                    A tool made to modernize tabletop RPGs
+                </div>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 20" preserveAspectRatio="none" width="100%" height="70" >
+            <polygon points="0,20  1000,20  500,10" style="fill:#ffffff; stroke: white; stroke-width: 2;"></polygon>
+        </svg>
+
+
+        <div class="bg-light  mx-auto  py-5 h-75" >
+            <div class="row h-25  ">
+                <div class="col-sm-12  text-center">
+                    <h3 class="text-uppercase" style="font-weight: 600;">What does it do ?</h3>
+                </div>
+            </div>
+            <div class="row h-25 w-75 mx-auto">
+                <div class="col-sm-12 pt-2  text-center text-wrap">
+                    <p> The purpose of this website is to provide a platform where you can stock (most) informations related to your character(s) and benefit from a database of community-provided elements.</p>
+                </div>
+            </div>
+        </div>
+
+       <div class="dark-bg text-white p-0  parallax-wrapper bg-1" style="height:20em; ">
+          <!-- <svg class="w-100 h-100">
+               <polygon points="0,0 648,25 1300,0  "  fill="white"  style="" />
+               <polygon points="0,320 648,295 1300,320  "  fill="white"  style="" />
+           </svg> -->
+
+           <div class="container-fluid p-0 m-0 text-md-center h-100" style="height:20em; " >
+               <div class="row align-items-start h-50">
+                   <div class="col-md-12">
+                       <!-- Polygon responsive ci dessous -->
+                       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 20" preserveAspectRatio="none" width="100%" height="70" >
+                           <polygon points="0,0  1000,0  500,10" style="fill:#ffffff; stroke: white; stroke-width: 2;"></polygon>
+                       </svg>
+                   </div>
+               </div>
+
+               <div class="row align-items-end h-50">
+                   <div class="col-md-12">
+                       <!-- Polygon responsive ci dessous -->
+                       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 20" preserveAspectRatio="none" width="100%" height="70" >
+                           <polygon points="0,20  1000,20  500,10" style="fill:#ffffff; stroke: white; stroke-width: 2;"></polygon>
+                       </svg>
+                   </div>
+               </div>
+
+           </div>
+
+
+       </div>
+
+
+        <div class="bg-light  mx-auto h-75 py-5" >
+            <div class="row h-25  ">
+                <div class="col-sm-12  text-center">
+                    <h3 class="text-uppercase" style="font-weight: 600;">How does it work ?</h3>
+                </div>
+            </div>
+            <div class="row h-25 w-75 mx-auto">
+                <div class="col-sm-12 pt-2  text-center text-wrap">
+                    <p> First, you have to sign up on this website, it's free and relatively easy.</p>
+                    <p> From here, you can either create a character and use the database as you see fit, or create <b>elements</b> for it.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dark-bg   mx-auto   parallax-wrapper bg-2" style="height:20em; ">
+            <div class="container-fluid p-0 m-0 text-md-center h-100" style="height:20em; " >
+                <div class="row align-items-start h-50">
+                    <div class="col-md-12">
+                        <!-- Polygon responsive ci dessous -->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 20" preserveAspectRatio="none" width="100%" height="70" >
+                            <polygon points="0,0  1000,0  500,10" style="fill:#ffffff; stroke: white; stroke-width: 2;"></polygon>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="row align-items-end h-50">
+                    <div class="col-md-12">
+                        <!-- Polygon responsive ci dessous -->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 20" preserveAspectRatio="none" width="100%" height="70" >
+                            <polygon points="0,20  1000,20  500,10" style="fill:#ffffff; stroke: white; stroke-width: 2;"></polygon>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="bg-light mx-auto  pt-3" style="height:5em; "></div>
+        <div class="bg-light  mx-auto   regular-wrapper" style="height:20em; ">
+            <div class="row">
+
+                    <div class="col-sm-6  ">
+                        <p class="text-uppercase text-center" style="font-weight: 600;">What's an element ?</p>
+                        <p class="text-wrap mx-5 mt-4 ">‘<b>Element</b>’ is a large term , it’s used to talk about a piece of equipment, a skill, spell, title, pretty much anything your character would potentialy interact with.<br><br>
+
+                            By the way, to make the searching of elements a lot easier, they are defined by their <b>tags</b>.</p>
+                    </div>
+
+
+                    <div class="col-sm-6  text-wrap">
+                        <p class="text-uppercase text-center" style="font-weight: 600;">What's a tag then ?</p>
+                        <p class="text-wrap mx-5 mt-4 "><b>Tags</b> are little pieces of information that will help you in your search of <b>Elements</b>.<br><br>   Let’s say you’re searching for a better two-handed sword that can deal fire damage, you would find it with more ease if  it was findable using the tags
+                            <b>#TwoHanded #Sword #FireDamage</b>.<br><br>
+
+                            But do not worry, you will also be able to browse the database by using simple names like ‘sword of the fire golem’.
+                        </p>
+                    </div>
+
+            </div>
+
+        </div>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/bootstrap/jquery-3.4.0.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/bootstrap/mdb.js') }}"></script>
+
+
+{% endblock %}
