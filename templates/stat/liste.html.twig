@@ -10,12 +10,18 @@
 
 <div class="example-wrapper">
     <h1>
-        <a class="nav-link waves-effect waves-light" href="{{ path('element_create') }}">Créer un element</a>
+        <a class="nav-link waves-effect waves-light" href="{{ path('stat_create') }}">Créer une statistique</a>
     </h1>
-
-    {% for element in elements %}
-       <h1>   name : {{ element.name }} </h1>
+<table>
+    {% for stat in stats %}
+        <tr>
+            <td>
+               <a href="{{ path('stat_edit',{id:stat.id}) }}"> {{ stat.name }}</a>
+            </td>
+        </tr>
     {% endfor%}
+</table>
+
 </div>
 
 {% endblock %}

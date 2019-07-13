@@ -9,7 +9,9 @@ class StatService
     {
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($stat);
+        dump($stat);die;
         $entityManager->flush();
+
     }
 }
 ?>

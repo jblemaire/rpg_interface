@@ -1,15 +1,15 @@
 <?php
 namespace App\Service;
-use App\Entity\Stat;
+use App\Entity\Tag;
 use Doctrine\ORM\EntityManagerInterface;
 
-class StatService
+class TagService
 {
-    public function create(Stat $stat)
+    public function create(Tag $tag)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($stat);
-        dump($stat);die;
+        $entityManager->persist($tag);
+
         $entityManager->flush();
 
     }

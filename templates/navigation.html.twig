@@ -1,57 +1,44 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-        {% block stylesheets %}{% endblock %}
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+{% extends 'base.html.twig' %}
 
-    </head>
+{% block title %}Hello ElementController!{% endblock %}
 
-    <header class="masthead mx-auto  w-50 ">
-    <nav class="navbar navbar-expand-lg bg-primary">
-        <a class="navbar-brand" href="#">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+    <div class=" mx-auto w-50 ">
+        <h1 class="ml-0">Navigation</h1>
+        <h3>
+            Element
+            <h5>
+                <a class="nav-link waves-effect waves-light" href="{{ path('element_liste') }}">Liste des elements</a>
+            </h5>
+            <h5>
+                <a class="nav-link waves-effect waves-light" href="{{ path('element_create') }}">Créer un element</a>
+            </h5>
+        </h3>
 
-                <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="{{ path('recherche') }}">Recherche</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="{{ path('element_liste') }}">Liste des elements</a>
-                </li>
+        <h3>
+            Stat
+            <h5>
+                <a class="nav-link waves-effect waves-light" href="{{ path('stat_liste') }}">Liste des statistiques</a>
+            </h5>
+            <h5>
+                <a class="nav-link waves-effect waves-light" href="{{ path('stat_create') }}">Créer une statistique</a>
+            </h5>
+        </h3>
+        <h3>
+            Tag
+            <h5>
+                <a class="nav-link waves-effect waves-light" href="{{ path('tag_liste') }}">Liste des tags</a>
+            </h5>
+            <h5>
+                <a class="nav-link waves-effect waves-light" href="{{ path('tag_create') }}">Créer un tag</a>
+            </h5>
+        </h3>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
+    </div>
 
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <a class="dropdown-item waves-effect waves-light" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item waves-effect waves-light" href="#">Something else here</a>
-                    </div>
-                </li>
-
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0 waves-effect waves-light" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    </header>
-
-    <body>
-    {% block body %}{% endblock %}
-    </body>
-
-    {% block javascripts %}{% endblock %}
-
-</html>
+{% endblock %}

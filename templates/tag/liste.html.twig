@@ -13,10 +13,10 @@
         <a class="nav-link waves-effect waves-light" href="{{ path('stat_create') }}">Créer une statistique</a>
     </h1>
 <table>
-    {% for stat in stats %}
+    {% for tag in tags %}
         <tr>
             <td>
-               <a href="{{ path('stat_edit',{id:stat.id}) }}"> {{ stat.name }}</a>
+               <a href="{{ path('tag_edit',{id:tag.id}) }}"> {{ tag.name }}</a>
             </td>
         </tr>
     {% endfor%}

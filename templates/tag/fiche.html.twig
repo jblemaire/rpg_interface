@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StatController!{% endblock %}
+{% block title %}Hello TagController!{% endblock %}
 
 {% block body %}
 <style>
@@ -11,9 +11,10 @@
 <div class="example-wrapper">
     {{ form_start(form) }}
 
-    {{ form_row(form.name) }}
-    {{ form_row(form.save) }}
+
+
     {{ form_rest(form) }}
+    {{ form_row(form.save) }}
     {{ form_end(form) }}
 </div>
 {% endblock %}
