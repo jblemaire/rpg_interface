@@ -8,16 +8,144 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>
-       Création d'un element
-    </h1>
-    <div>
-        {{ form_start(form) }}
-        {{ form_row(form) }}
+<!-- <div class="example-wrapper">-->
 
-        {{ form_end(form, {'render_rest': false}) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>
+                    Création d'un element
+                </h1>
+                <div>
+                    {{ form_start(form) }}
+
+                    {{ form_row(form) }}
+                    {{ form_end(form, {'render_rest': false}) }}
+                </div>
+            </div>
+            {% if edit %}
+            <div class="col-6">
+                <h1>
+                    Attribuer des tags
+                </h1>
+                <div>
+                    <select id="tagList">
+
+                        {% for tag in tags %}
+                          <option value="{{tag.id}}">{{ tag.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button id="addTag">
+                        Ajouter
+                    </button>
+                    <table id="tagTable">
+
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
     </div>
-</div>
+
+<!-- </div>-->
 
 {% endblock %}
+    {% block javascripts %}
+
+        <script
+                src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+
+        {% if edit %}
+            <script>
+
+                /*
+                    TODO : Unifier les bouts de code qui génère le tableau des tags en UNE fonction.
+                */
+                let selectedTagList = {};
+
+                function getTags(){
+                        $.ajax({
+                            url:'{{ (path('element_get_tags')) }}',
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+
+                                "idElement":{{ form.id.vars.value }},
+                            },
+                            async: true,
+                            success: function (response)
+                            {
+                                //TODO : Remplir le tableau des tags déjà affecté
+                                response.forEach(function(element){
+                                    selectedTagList[element.id] = element.name;
+                                    $('#tagTable').append("<tr id='tag-"+element.id+"'>" +
+                                        "<td>"+element.id+"</td>" +
+                                        "<td>"+element.name+"</td>" +
+                                        "<td>" +
+                                        "<a href='#' onclick=removeLink("+element.id +")>delete</a>"+
+                                        "</td></tr>");
+                                });
+                              //
+                            }
+                        });
+
+                }
+
+                getTags();
+            function removeLink(idTag){
+                $.ajax({
+                    url:'{{ (path('element_remove_link')) }}',
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "idTag": idTag,
+                        "idElement":{{ form.id.vars.value }},
+                    },
+                    async: true,
+                    success: function (response)
+                    {
+
+                        if(response.status){
+                            let tagRow = "tag-"+response.idTag;
+                            $("#"+tagRow).remove();
+                        }
+                    }
+                });
+            };
+            function fillTagTable(){
+                $('#tagTable').empty();
+                $.each(selectedTagList,function(key, value){
+                    $('#tagTable').append("<tr id='tag-"+key+"'>" +
+                        "<td>"+key+"</td>" +
+                        "<td>"+value+"</td>" +
+                        "<td>" +
+                        "<a href='#' onclick=removeLink("+key+")>delete</a>"+
+                        "</td></tr>");
+               });
+            }
+            $("#addTag").click(function () {
+                let idTag = $("#tagList").val();
+                let name = $("#tagList option:selected").text();
+                selectedTagList[idTag] = name;
+                fillTagTable();
+                $.ajax({
+                    url:'{{ (path('element_link')) }}',
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "idTag": idTag,
+                        "idElement":{{ form.id.vars.value }},
+                    },
+                    async: true,
+                    success: function (data)
+                    {
+                       //TODO : afficher un message pour indiquer que le tag a bien été affecté.
+                    }
+                });
+            });
+        </script>
+        {% endif %}
+    {% endblock %}

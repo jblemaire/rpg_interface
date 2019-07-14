@@ -98,9 +98,15 @@ class Element
      */
     private $stat;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag")
+     */
+    private $tag;
+
     public function __construct()
     {
         $this->stat = new ArrayCollection();
+        $this->tag = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -309,6 +315,32 @@ class Element
     {
         if ($this->stat->contains($stat)) {
             $this->stat->removeElement($stat);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTag(): Collection
+    {
+        return $this->tag;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tag->contains($tag)) {
+            $this->tag[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tag->contains($tag)) {
+            $this->tag->removeElement($tag);
         }
 
         return $this;

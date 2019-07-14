@@ -12,13 +12,17 @@ use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 class ElementType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('id',HiddenType::class)
             ->add('name')
-            ->add('description')
+            ->add('description',TextareaType::class)
             ->add('price')
             ->add('isTemplate')
             ->add('effect')
@@ -27,11 +31,12 @@ class ElementType extends AbstractType
             ->add('weight')
             ->add('stack_size')
             ->add('nb_upgrade_max')
-            ->add('nb_upgrade')
+       //     ->add('nb_upgrade')
             ->add('slot')
             ->add('rarity')
             ->add('type')
             ->add('family')
+
            /* ->add('stat',EntityType::class,[
                 'class' => Stat::class,
                 'choice_label' => 'name',

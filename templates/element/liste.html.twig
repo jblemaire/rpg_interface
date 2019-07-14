@@ -13,9 +13,16 @@
         <a class="nav-link waves-effect waves-light" href="{{ path('element_create') }}">Créer un element</a>
     </h1>
 
-    {% for element in elements %}
-       <h1>   name : {{ element.name }} </h1>
-    {% endfor%}
+
+    <table>
+        {% for element in elements %}
+            <tr>
+                <td>
+                    <a href="{{ path('element_edit',{id:element.id}) }}"> {{ element.name }}</a>
+                </td>
+            </tr>
+        {% endfor%}
+    </table>
 </div>
 
 {% endblock %}
